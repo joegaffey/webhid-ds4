@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebHID DS4 Demo</title>
+    <meta charset="UTF-8" />
+    <style>
+      * { font-family: Arial, Helvetica, sans-serif; }
+      .hidden { visibility: hidden; }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>
+        Connect a PlayStation DS4 to your device and click on 'Connect' to interact with the virtual controller.<br/>
+        If you don't have a DS4 or would just like to see it in operation check out this <a href="https://www.youtube.com/watch?v=XZfjJ_p9w6E">video</a>.
+      </p>
+      <p>
+        Requires a browser with <a href="https://caniuse.com/webhid">WebHID support</a>.<br/>
+        USB only recommended for now due to poor performance and feature limitations on Bluetooth.
+      </p>
+      <p>
+        Implemented in Vanilla JS with zero dependencies based on original work <a href="https://github.com/TheBITLINK/WebHID-DS4">here</a>.<br/> 
+        Controller image courtesy of <a href="https://commons.wikimedia.org/wiki/File:Dualshock_4_Layout.svg">Wikimedia Commons</a>.<br/>
+        Check out the code at <a href="https://glitch.com/edit/#!/webhid-ds4">glitch.com</a>.        
+      </p>
+      <p><button id="connectButton">Connect</button></p>
+      <table>
+        <tr><td>Light Bar</td><td><input id="color" type="color"></td></tr>
+        <tr><td>Light Rumble</td><td><input type="range" min="0" max="255" value="0" class="slider" id="smallRumble"></td></tr>
+        <tr><td>Heavy Rumble</td><td><input type="range" min="0" max="255" value="0" class="slider" id="largeRumble"></td></tr>
+      </table>
+      <p>
+        <object onload="ds4svg = this;" id="ds4svg" type="image/svg+xml" data="ds4.svg"></object>
+      </p>
+      <div class="hidden">
+        <object onload="gyroSvg = this;" id="gyro_svg" type="image/svg+xml" data="vectors.svg"></object>
+        <object onload="accelSvg = this;" id="accel_svg" type="image/svg+xml" data="vectors.svg"></object>
+      </div>      
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
